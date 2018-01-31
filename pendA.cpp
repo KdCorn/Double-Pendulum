@@ -103,16 +103,13 @@ void PendA::rhs(double* ff, double* xx, double tt)
 	double mT = m1 + m2;
 
 	ff[0] = omega1;
-	//ff[1] = (-len1*m2*omega1*omega1*c12*s12 + m2*g*c12*s12 - mT*g*s1 - m2*len2*omega2*omega2*s12) / (mT*len1 - len1*m2*c12*c12);                                 //BY HAND
-	ff[1] = (c12*(-len1*m2*s12*omega1*omega1 + g*m2*s2)) / (-len1*m2*c12*c12 + len1*mT) - (len2*m2*s12*omega2*omega2 + g*mT*s1) / (-len1*m2*c12*c12 + len1*mT);    //MATLAB
+	ff[1] = (c12*(-len1*m2*s12*omega1*omega1 + g*m2*s2)) / (-len1*m2*c12*c12 + len1*mT) - (len2*m2*s12*omega2*omega2 + g*mT*s1) / (-len1*m2*c12*c12 + len1*mT);
 	ff[2] = omega2;
-	//ff[3] = (g*mT*s1*c12 + len2*m2*omega2*omega2*c12*s12 + len1*mT*omega1*omega1*s12 - g*mT*s2) / (len2*mT - m2*len2*c12*c12);                                               //BY HAND
-	ff[3] = (mT*(-len1*m2*s12*omega1*omega1 + g*m2*s2)) / (len2*c12*c12 * m2*m2 - len2*mT*m2) + (c12*(len2*m2*s12*omega2*omega2 + g*mT*s1)) / (-len2*m2*c12*c12 + len2*mT);    //MATLAB
+	ff[3] = (mT*(-len1*m2*s12*omega1*omega1 + g*m2*s2)) / (len2*c12*c12*m2*m2 - len2*mT*m2) + (c12*(len2*m2*s12*omega2*omega2 + g*mT*s1)) / (-len2*m2*c12*c12 + len2*mT);
 }
 
 //----------------------------------------------------------------------------
 // getEnergy: Calculate and return total energy (kinetic + potential)
-// ****************************************************************
 //----------------------------------------------------------------------------
 double PendA::getEnergy()
 {
